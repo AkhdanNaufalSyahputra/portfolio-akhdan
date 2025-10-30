@@ -1,0 +1,271 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 56px;
+}
+
+.navbar-brandh {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+.custom-col ul {
+    padding: 0;
+}
+
+.custom-col ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.list-inline-item a {
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+.list-inline-item a:hover {
+    color: #0056b3;
+}
+
+.list-inline-item i {
+    font-size: 1.5rem;
+}
+
+.section-title {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.btn-outline-dark {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-dark:hover {
+    background-color: #007bff;
+    color: #1f1717;
+}
+
+.img-hero {
+    border-radius: 10px;
+}
+
+.spacing {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.card {
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-icon {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.block {
+    width: 50px;
+    height: 4px;
+    background-color: #007bff;
+    margin: 20px auto;
+}
+
+.img-fluid {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#contact .form-group {
+    margin-bottom: 20px;
+}
+
+#contact .btn {
+    width: 100%;
+}
+
+#contact .form-control {
+    border-radius: 5px;
+}
+
+@media (min-width: 992px) {
+    .custom-col ul {
+        padding-top: 20px;
+    }
+
+    .section-title {
+        padding: 80px 0;
+    }
+
+    .section-title h2 {
+        font-size: 3rem;
+    }
+
+    .section-title p {
+        font-size: 1.3rem;
+    }
+}
+
+.hero-section {
+    background: #f8f9fa; /* Adjust background color as needed */
+    padding: 60px 0; /* Add padding to give space */
+    position: relative;
+    text-align: center; /* Center the text */
+}
+
+.social-icons-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.social-icons {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.social-icons li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.social-icons i {
+    font-size: 1.5rem;
+    color: #007bff; /* Adjust color as needed */
+}
+
+h1 {
+    margin-top: 80px; /* Adjust margin to ensure proper spacing */
+    font-size: 3rem; /* Adjust font size as needed */
+    color: #333; /* Adjust color as needed */
+}
+
+p {
+    font-size: 1.25rem;
+    color: #555; /* Adjust color as needed */
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    margin-top: 30px;
+}
+
+.btn-outline-light {
+    border: 1px solid #131010; /* Adjust border color as needed */
+    color: #e22c2c; /* Adjust text color as needed */
+    margin-right: 10px;
+}
+
+.btn-outline-light:hover {
+    background-color: #fff; /* Adjust background color on hover */
+    color: #007bff; /* Adjust text color on hover */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+.animated-image {
+    animation: fadeIn 2s ease-in-out, bounce 2s infinite;
+    border-radius: 50%;
+    width: 200px; /* Mengubah ukuran gambar */
+    height: 200px; /* Mengubah ukuran gambar */
+}
+
+.animated-text {
+    animation: slideInRight 2s ease-in-out;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.py-5 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-dark {
+    background-color: #343a40;
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-dark:hover {
+    background-color: #23272b;
+}
