@@ -1,290 +1,809 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="MG7yEif6P0UWETYbRhDj2ui4VdC88Qp25oH_eiZyikc" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script>
-  $(document).ready(function(){
-    $('a.nav-link').on('click', function(event) {
-      if (this.hash !== "") {
-        event.preventDefault();
-        var hash = this.hash;
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top - 70
-        }, 800);
+  <meta name="google-site-verification" content="MG7yEif6P0UWETYbRhDj2ui4VdC88Qp25oH_eiZyikc" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Akhdan Naufal | Portfolio</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+
+  <style>
+    :root {
+      --dark: #0f172a;
+      --navy: #111827;
+      --blue: #2563eb;
+      --sky: #38bdf8;
+      --soft: #f8fafc;
+      --text: #334155;
+      --muted: #64748b;
+      --card: #ffffff;
+    }
+
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background-color: var(--soft);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+      padding: 14px 0;
+    }
+
+    .navbar-brand {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff !important;
+      letter-spacing: 0.5px;
+    }
+
+    .navbar-brand span {
+      color: var(--sky);
+    }
+
+    .navbar-nav .nav-link {
+      color: #e5e7eb !important;
+      font-weight: 500;
+      margin-left: 18px;
+      transition: 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--sky) !important;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler-icon {
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    /* Hero */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.25), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.25), transparent 35%),
+        linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #0f172a 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.12);
+      top: 15%;
+      right: -120px;
+      filter: blur(2px);
+    }
+
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.15);
+      bottom: 8%;
+      left: -80px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge-custom {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #bae6fd;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .hero-title span {
+      color: var(--sky);
+    }
+
+    .hero-subtitle {
+      font-size: 1.08rem;
+      color: #cbd5e1;
+      max-width: 650px;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons .btn {
+      border-radius: 999px;
+      padding: 12px 24px;
+      font-weight: 700;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary-custom {
+      background: linear-gradient(135deg, var(--blue), var(--sky));
+      color: #fff;
+      border: none;
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary-custom:hover {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-custom {
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #fff;
+    }
+
+    .btn-outline-custom:hover {
+      background: #fff;
+      color: var(--dark);
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(14px);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .profile-frame {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.8), rgba(37, 99, 235, 0.8));
+      border-radius: 24px;
+      padding: 8px;
+      margin-bottom: 20px;
+    }
+
+    .profile-frame img {
+      width: 100%;
+      border-radius: 18px;
+      object-fit: cover;
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .quick-info div {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .quick-info strong {
+      display: block;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .quick-info span {
+      color: #cbd5e1;
+      font-size: 0.85rem;
+    }
+
+    /* General Section */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* About */
+    .about-card {
+      background: var(--card);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .about-photo {
+      border-radius: 26px;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+      width: 100%;
+      max-width: 430px;
+    }
+
+    .info-chip {
+      display: inline-block;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin: 5px 5px 5px 0;
+    }
+
+    /* Portfolio */
+    .portfolio-section {
+      background: #fff;
+    }
+
+    .project-card {
+      border: none;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      transition: 0.35s ease;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 24px 60px rgba(37, 99, 235, 0.16);
+    }
+
+    .project-img-wrap {
+      height: 220px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.4s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .project-card .card-body {
+      padding: 26px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--blue);
+      background: #dbeafe;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .project-card h5 {
+      color: var(--dark);
+      font-weight: 850;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Skills */
+    .skills-section {
+      background:
+        linear-gradient(135deg, #eff6ff, #f8fafc);
+    }
+
+    .skill-card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 28px;
+      height: 100%;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+      transition: 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .skill-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--blue), var(--sky));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+    }
+
+    .skill-card h5 {
+      color: var(--dark);
+      font-weight: 800;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    /* Contact */
+    .contact-card {
+      background: var(--dark);
+      color: #fff;
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.18);
+    }
+
+    .contact-card p {
+      color: #cbd5e1;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      margin-bottom: 12px;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .contact-link:hover {
+      background: rgba(56, 189, 248, 0.18);
+      color: #fff;
+      text-decoration: none;
+      transform: translateX(5px);
+    }
+
+    .contact-link i {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+    }
+
+    .contact-form {
+      background: #fff;
+      padding: 32px;
+      border-radius: 28px;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    .form-control {
+      border-radius: 14px;
+      border: 1px solid #cbd5e1;
+      padding: 12px 14px;
+    }
+
+    .form-control:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.16);
+    }
+
+    /* Footer */
+    footer {
+      background: #020617;
+      color: #cbd5e1;
+      padding: 32px 0;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      margin: 0 5px;
+      transition: 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      background: var(--blue);
+      text-decoration: none;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        text-align: center;
+        padding-top: 110px;
       }
-    });
-  });
-</script>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-        }
-        .navbar {
-            background-color: #343a40;
-        }
-        .navbar-brandh {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff !important;
-        }
-        .navbar-nav .nav-link {
-            color: #fff !important;
-        }
-        .hero-section {
-            height: 100vh;
-            background: url('hero-background.jpg') no-repeat center center/cover;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .hero-section h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-        .hero-section p {
-            font-size: 1.2rem;
-        }
-        .hero-buttons a {
-            margin: 0 10px;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .img-hero {
-            border-radius: 10px;
-            width: 100%;
-            height: auto;
-        }
-        .card-icon {
-            font-size: 2rem;
-            color: #007bff;
-        }
-        .card-title {
-            margin-top: 1rem;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        .contact-form {
-            background-color: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
-        }
-        .social-icons a {
-            font-size: 1.5rem;
-            color: #343a40;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-        .social-icons a:hover {
-            color: #007bff;
-        }
-    </style>
+
+      .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-card {
+        margin-top: 35px;
+      }
+
+      .navbar-nav .nav-link {
+        margin-left: 0;
+      }
+
+      .quick-info {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <nav id="main-nav" class="navbar navbar-expand-md fixed-top">
-        <div class="container">
-            <a href="#home" class="navbar-brandh">Akhdan Naufal</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="#home" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#portfolio" class="nav-link">portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="social-icons-container">
-                        <ul class="list-inline social-icons">
-                            <li class="list-inline-item">
-                                <a href="mailto:akdnnfl@gmail.com"><i class="fas fa-envelope-open-text"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://discord.com" target="_blank"><i class="fab fa-discord"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://www.instagram.com/akdnn_937/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://wa.me/+6285150945443" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                            </li>
-                        </ul>
-                    </div>  
-                    <h1 class="display-3" style="color: black;">I am Akhdan Naufal</h1>
-                    <p class="lead" style="color: black;">I am currently pursuing my studies in Management at Universitas Dian Nusantara (UNDIRA) while also working at PT Pelita Bandar Nasional (PELNI Crewing). Balancing work and education allows me to gain both academic knowledge and practical experience at the same time. Through this journey, I aim to develop my skills in human resource management and strengthen my understanding of the business and maritime industry.</p>
-                    <div class="hero-buttons">
-                        <a href="#portfolio" class="btn btn-outline-light">My Portfolio</a>
-                        <a href="#" class="btn btn-outline-light"><i class="fas fa-caret-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>    
-
-    <section id="about" class="py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <img src="My.jpg" alt="" class="img-fluid img-hero animated-image" style="max-width: 80%; height: auto; border-radius: 10px;">
-                </div>
-                <div class="col-lg-6 animated-text">
-                    <h2 class="display-4">Hi, I am Akhdan Naufal</h2>
-                    <p class="lead">Hi, My full name is Akhdan Naufal Syahputra, can also be called Akhdan, My hobby was originally playing soccer, but now there is no time:></p>
-                    <a href="#" class="btn btn-dark p-2">Read more</a>
-                </div>
-            </div>
-        </div>
-    </section>    
-
-    <section id="portfolio" class="bg-white py-5">
-  <div class="container">
-    <div class="section-title text-center">
-      <h2 class="display-4">Portfolio</h2>
-      <p class="lead">Here are some of my recent projects in web development and design.</p>
-    </div>
-
-    <div class="row d-flex align-items-stretch">
-      
-      <!-- Card 1 -->
-      <div class="col-md-4 mb-4 d-flex">
-        <div class="card shadow-sm flex-fill">
-          <img src="images/Kopi-dans.jpg" class="card-img-top" alt="Online Shop Drink Design">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Online Shop Drink Design</h5>
-            <p class="card-text flex-grow-1">
-              A desktop design concept for an online drink store built in Figma, featuring a clean interface, consistent color scheme, and user-friendly navigation.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="col-md-4 mb-4 d-flex">
-        <div class="card shadow-sm flex-fill">
-          <img src="images/mobile-design.jpg" class="card-img-top" alt="Mobile Application Design">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Mobile Application Design</h5>
-            <p class="card-text flex-grow-1">
-              A mobile online drink shop design created in Figma, focusing on responsive layouts and an intuitive user interface.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="col-md-4 mb-4 d-flex">
-        <div class="card shadow-sm flex-fill">
-          <img src="images/pbn-design.jpg" class="card-img-top" alt="CMS PELNI Crewing Design">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">CMS PELNI Crewing Design</h5>
-            <p class="card-text flex-grow-1">
-              Designed a CMS prototype for PELNI Crewing using Figma and Adobe XD, focusing on efficient crew management and intuitive user experience.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <section id="portfolio" class="py-5">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="display-4">My Skills</h2>
-                <p class="lead">I don't have good skills, but I love sholawat.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-5">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="display-4">Contact Me</h2>
-                <p class="lead">Feel free to reach out to me for any inquiries or collaborations.</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="contact-form">
-                        <form>
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea class="form-control" id="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-dark p-2">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer class="bg-dark text-light py-4">
+  <!-- Navbar -->
+  <nav id="main-nav" class="navbar navbar-expand-md fixed-top navbar-dark">
     <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <p>&copy; 2025 Akhdan Naufal. All Rights Reserved.</p>
-            </div>
-            <div class="col-12 text-center">
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a href="mailto:akdnnfl@gmail.com" class="text-light"><i class="fas fa-envelope"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://discord.com" target="_blank" class="text-light"><i class="fab fa-discord"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://www.instagram.com/akdnn_937/" target="_blank" class="text-light"><i class="fab fa-instagram"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://wa.me/+6285150945443" target="_blank" class="text-light"><i class="fab fa-whatsapp"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+      <a href="#home" class="navbar-brand">Akhdan<span>.</span></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <i class="fas fa-bars text-light"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
     </div>
-</footer>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero-section">
+    <div class="container hero-content">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <span class="badge-custom">
+            Management Student • HR Enthusiast • Maritime Industry
+          </span>
+
+          <h1 class="hero-title">
+            Hi, I’m <span>Akhdan Naufal</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            I am currently pursuing my studies in Management at Universitas Dian Nusantara while working at PT Pelita Bandar Nasional (PELNI Crewing). I am interested in human resource management, business, and the maritime industry.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#portfolio" class="btn btn-primary-custom">View Portfolio</a>
+            <a href="#contact" class="btn btn-outline-custom">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="hero-card">
+            <div class="profile-frame">
+              <img src="My.jpg" alt="Akhdan Naufal">
+            </div>
+
+            <div class="quick-info">
+              <div>
+                <strong>Student</strong>
+                <span>Management, UNDIRA</span>
+              </div>
+              <div>
+                <strong>Work</strong>
+                <span>PELNI Crewing</span>
+              </div>
+              <div>
+                <strong>Interest</strong>
+                <span>HR & Business</span>
+              </div>
+              <div>
+                <strong>Focus</strong>
+                <span>Design & Management</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 text-center mb-4 mb-lg-0">
+          <img src="My.jpg" alt="Akhdan Naufal" class="about-photo">
+        </div>
+
+        <div class="col-lg-7">
+          <div class="about-card">
+            <div class="section-label">About Me</div>
+            <h2>Personal Profile</h2>
+
+            <p>
+              My full name is Akhdan Naufal Syahputra. I am a Management student at Universitas Dian Nusantara and currently work at PT Pelita Bandar Nasional, also known as PELNI Crewing.
+            </p>
+
+            <p>
+              Through my academic and professional journey, I continue to develop my understanding of human resource management, organizational work, administration, and the maritime business environment.
+            </p>
+
+            <div class="mt-3">
+              <span class="info-chip">Human Resource</span>
+              <span class="info-chip">Management</span>
+              <span class="info-chip">Maritime Industry</span>
+              <span class="info-chip">UI Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="portfolio-section">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <div class="section-label">Portfolio</div>
+        <h2>Selected Projects</h2>
+        <p>
+          A collection of my design and development projects, mainly focused on interface design, business concepts, and digital product prototypes.
+        </p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4 mb-4">
+          <div class="project-card">
+            <div class="project-img-wrap">
+              <img src="images/Kopi dans.jpg" alt="Online Shop Drink Design">
+            </div>
+            <div class="card-body">
+              <span class="project-tag">Figma Design</span>
+              <h5>Online Shop Drink Design</h5>
+              <p>
+                A desktop design concept for an online drink store with a clean interface, consistent layout, and user-friendly navigation.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="project-card">
+            <div class="project-img-wrap">
+              <img src="images/mobile-design.jpg" alt="Mobile Application Design">
+            </div>
+            <div class="card-body">
+              <span class="project-tag">Mobile UI</span>
+              <h5>Mobile Application Design</h5>
+              <p>
+                A mobile online drink shop design created in Figma, focusing on responsive display, clear navigation, and simple user experience.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="project-card">
+            <div class="project-img-wrap">
+              <img src="images/pbn-design.jpg" alt="CMS PELNI Crewing Design">
+            </div>
+            <div class="card-body">
+              <span class="project-tag">CMS Prototype</span>
+              <h5>CMS PELNI Crewing Design</h5>
+              <p>
+                A CMS prototype for PELNI Crewing using Figma and Adobe XD, focused on efficient crew management and intuitive experience.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <div class="section-label">Skills</div>
+        <h2>What I’m Developing</h2>
+        <p>
+          I am still learning and improving, but these are several areas that I continue to develop through study, work, and practice.
+        </p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4 mb-4">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fas fa-users"></i></div>
+            <h5>Human Resource</h5>
+            <p>
+              Understanding people management, administration, recruitment, and organizational coordination.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fas fa-pencil-ruler"></i></div>
+            <h5>UI/UX Design</h5>
+            <p>
+              Creating simple digital product prototypes and interface concepts using design tools.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fas fa-ship"></i></div>
+            <h5>Maritime Business</h5>
+            <p>
+              Learning business and operational processes within the crewing and maritime industry.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <div class="section-label">Contact</div>
+        <h2>Let’s Connect</h2>
+        <p>
+          Feel free to reach out for collaboration, discussion, or professional networking.
+        </p>
+      </div>
+
+      <div class="row align-items-stretch">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+          <div class="contact-card h-100">
+            <h3>Contact Information</h3>
+            <p class="mb-4">
+              You can contact me through email, Instagram, WhatsApp, or Discord.
+            </p>
+
+            <a href="mailto:akdnnfl@gmail.com" class="contact-link">
+              <i class="fas fa-envelope"></i>
+              <span>akdnnfl@gmail.com</span>
+            </a>
+
+            <a href="https://wa.me/6285150945443" target="_blank" class="contact-link">
+              <i class="fab fa-whatsapp"></i>
+              <span>WhatsApp</span>
+            </a>
+
+            <a href="https://www.instagram.com/akdnn_937/" target="_blank" class="contact-link">
+              <i class="fab fa-instagram"></i>
+              <span>@akdnn_937</span>
+            </a>
+
+            <a href="https://discord.com" target="_blank" class="contact-link">
+              <i class="fab fa-discord"></i>
+              <span>Discord</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="contact-form h-100">
+            <form>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Your name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Your email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" rows="5" placeholder="Write your message..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary-custom">
+                Send Message
+              </button>
+            </form>
+
+            <small class="d-block mt-3 text-muted">
+              Note: This form is a front-end display only. To make it work, it needs to be connected to a form service or backend.
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <h5 class="text-white mb-2">Akhdan Naufal Syahputra</h5>
+      <p class="mb-3">Management Student • HR Enthusiast • Maritime Industry</p>
+
+      <div class="footer-social mb-3">
+        <a href="mailto:akdnnfl@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://discord.com" target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://www.instagram.com/akdnn_937/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/6285150945443" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+
+      <p class="mb-0">&copy; 2026 Akhdan Naufal. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
