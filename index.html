@@ -12,296 +12,463 @@
 
   <style>
     :root {
-      --dark: #0f172a;
-      --navy: #111827;
-      --blue: #2563eb;
-      --sky: #38bdf8;
-      --soft: #f8fafc;
-      --text: #334155;
-      --muted: #64748b;
-      --card: #ffffff;
+      --bg: #050816;
+      --bg-2: #0b1024;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-2: rgba(255, 255, 255, 0.09);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --blue: #38bdf8;
+      --purple: #8b5cf6;
+      --green: #22c55e;
+      --line: rgba(255, 255, 255, 0.12);
     }
 
     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       scroll-behavior: smooth;
     }
 
     body {
       font-family: "Segoe UI", Arial, sans-serif;
-      line-height: 1.7;
+      background: var(--bg);
       color: var(--text);
-      background-color: var(--soft);
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    /* Navbar */
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* NAVBAR */
     .navbar {
-      background: rgba(15, 23, 42, 0.92);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
-      padding: 14px 0;
+      background: rgba(5, 8, 22, 0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0;
     }
 
     .navbar-brand {
-      font-size: 1.3rem;
-      font-weight: 800;
       color: #fff !important;
-      letter-spacing: 0.5px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      font-size: 1.3rem;
     }
 
     .navbar-brand span {
-      color: var(--sky);
+      color: var(--blue);
     }
 
     .navbar-nav .nav-link {
-      color: #e5e7eb !important;
-      font-weight: 500;
-      margin-left: 18px;
+      color: #cbd5e1 !important;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-left: 20px;
+      letter-spacing: 0.5px;
       transition: 0.3s ease;
     }
 
     .navbar-nav .nav-link:hover {
-      color: var(--sky) !important;
+      color: var(--blue) !important;
     }
 
     .navbar-toggler {
-      border: none;
+      border: 0;
     }
 
-    .navbar-toggler-icon {
-      color: white;
-      font-size: 1.5rem;
-    }
-
-    /* Hero */
-    .hero-section {
+    /* HERO */
+    .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
+      padding-top: 90px;
+      position: relative;
       background:
-        radial-gradient(circle at top right, rgba(56, 189, 248, 0.25), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.25), transparent 35%),
-        linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #0f172a 100%);
-      color: #fff;
-      position: relative;
+        radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.18), transparent 30%),
+        radial-gradient(circle at 85% 25%, rgba(139, 92, 246, 0.24), transparent 28%),
+        linear-gradient(135deg, #050816, #0b1024 55%, #050816);
       overflow: hidden;
-      padding-top: 80px;
     }
 
-    .hero-section::before {
+    .hero::before {
       content: "";
       position: absolute;
-      width: 420px;
-      height: 420px;
+      width: 580px;
+      height: 580px;
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 50%;
-      background: rgba(56, 189, 248, 0.12);
-      top: 15%;
-      right: -120px;
-      filter: blur(2px);
+      right: -190px;
+      top: 120px;
     }
 
-    .hero-section::after {
+    .hero::after {
       content: "";
       position: absolute;
-      width: 260px;
-      height: 260px;
+      width: 340px;
+      height: 340px;
+      background: rgba(56, 189, 248, 0.08);
       border-radius: 50%;
-      background: rgba(37, 99, 235, 0.15);
-      bottom: 8%;
-      left: -80px;
+      filter: blur(18px);
+      left: -140px;
+      bottom: 40px;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .badge-custom {
-      display: inline-block;
-      padding: 8px 16px;
+    .mini-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
       border-radius: 999px;
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: #bae6fd;
-      font-size: 0.9rem;
-      margin-bottom: 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      color: #dbeafe;
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-bottom: 22px;
     }
 
-    .hero-title {
-      font-size: clamp(2.4rem, 6vw, 5rem);
-      font-weight: 900;
-      line-height: 1.08;
-      margin-bottom: 20px;
+    .mini-label .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 20px var(--green);
     }
 
-    .hero-title span {
-      color: var(--sky);
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      font-weight: 950;
+      letter-spacing: -4px;
+      margin-bottom: 24px;
     }
 
-    .hero-subtitle {
-      font-size: 1.08rem;
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      max-width: 660px;
       color: #cbd5e1;
-      max-width: 650px;
-      margin-bottom: 32px;
+      font-size: 1.05rem;
+      margin-bottom: 30px;
     }
 
-    .hero-buttons .btn {
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       border-radius: 999px;
-      padding: 12px 24px;
-      font-weight: 700;
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
-
-    .btn-primary-custom {
-      background: linear-gradient(135deg, var(--blue), var(--sky));
+      padding: 13px 24px;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
       color: #fff;
+      font-weight: 800;
       border: none;
-      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 16px 45px rgba(56, 189, 248, 0.22);
+      transition: 0.3s ease;
     }
 
-    .btn-primary-custom:hover {
+    .btn-main:hover {
+      transform: translateY(-3px);
       color: #fff;
-      transform: translateY(-2px);
+      text-decoration: none;
     }
 
-    .btn-outline-custom {
-      border: 1px solid rgba(255, 255, 255, 0.35);
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 13px 24px;
       color: #fff;
+      font-weight: 800;
+      border: 1px solid var(--line);
+      transition: 0.3s ease;
     }
 
-    .btn-outline-custom:hover {
-      background: #fff;
-      color: var(--dark);
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      text-decoration: none;
+      transform: translateY(-3px);
     }
 
     .hero-card {
       position: relative;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(14px);
-      border-radius: 28px;
-      padding: 26px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 22px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
     }
 
-    .profile-frame {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.8), rgba(37, 99, 235, 0.8));
-      border-radius: 24px;
-      padding: 8px;
-      margin-bottom: 20px;
-    }
-
-    .profile-frame img {
+    .hero-card img {
       width: 100%;
-      border-radius: 18px;
+      border-radius: 26px;
+      aspect-ratio: 1 / 1.05;
       object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .quick-info {
+    .hero-card-info {
+      margin-top: 18px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
 
-    .quick-info div {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
+    .info-box {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--line);
+      border-radius: 18px;
       padding: 14px;
     }
 
-    .quick-info strong {
+    .info-box strong {
       display: block;
+      font-size: 1rem;
       color: #fff;
+    }
+
+    .info-box span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .social-floating {
+      position: absolute;
+      right: -18px;
+      top: 35px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .social-floating a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      transition: 0.3s ease;
+    }
+
+    .social-floating a:hover {
+      background: var(--blue);
+      color: #050816;
+      transform: translateX(-5px);
+    }
+
+    /* SECTION GENERAL */
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-head {
+      margin-bottom: 55px;
+    }
+
+    .section-kicker {
+      color: var(--blue);
+      font-weight: 900;
+      letter-spacing: 2px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 950;
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 720px;
       font-size: 1rem;
     }
 
-    .quick-info span {
-      color: #cbd5e1;
-      font-size: 0.85rem;
+    /* ABOUT */
+    .about {
+      background: var(--bg-2);
     }
 
-    /* General Section */
-    section {
-      padding: 90px 0;
-    }
-
-    .section-label {
-      color: var(--blue);
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .section-title h2 {
-      color: var(--dark);
-      font-weight: 900;
-      font-size: 2.4rem;
-      margin-bottom: 14px;
-    }
-
-    .section-title p {
-      color: var(--muted);
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    /* About */
-    .about-card {
+    .about-panel {
       background: var(--card);
-      border-radius: 28px;
+      border: 1px solid var(--line);
+      border-radius: 32px;
       padding: 34px;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
-      border: 1px solid #e2e8f0;
-    }
-
-    .about-photo {
-      border-radius: 26px;
-      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
-      width: 100%;
-      max-width: 430px;
-    }
-
-    .info-chip {
-      display: inline-block;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: #e0f2fe;
-      color: #0369a1;
-      font-weight: 700;
-      font-size: 0.85rem;
-      margin: 5px 5px 5px 0;
-    }
-
-    /* Portfolio */
-    .portfolio-section {
-      background: #fff;
-    }
-
-    .project-card {
-      border: none;
-      border-radius: 24px;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-      transition: 0.35s ease;
       height: 100%;
     }
 
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 24px 60px rgba(37, 99, 235, 0.16);
+    .about-panel h3 {
+      font-weight: 900;
+      margin-bottom: 18px;
     }
 
-    .project-img-wrap {
-      height: 220px;
+    .about-panel p {
+      color: #cbd5e1;
+      margin-bottom: 18px;
+    }
+
+    .about-number {
+      font-size: 5rem;
+      font-weight: 950;
+      line-height: 1;
+      color: rgba(56, 189, 248, 0.18);
+      margin-bottom: 12px;
+    }
+
+    .marquee {
+      margin-top: 70px;
       overflow: hidden;
-      background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+      white-space: nowrap;
     }
 
-    .project-card img {
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 18s linear infinite;
+      color: #e2e8f0;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .marquee-track span {
+      margin-right: 36px;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .skill {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      transition: 0.3s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-8px);
+      background: var(--card-2);
+      border-color: rgba(56, 189, 248, 0.45);
+    }
+
+    .skill i {
+      font-size: 1.8rem;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    .skill h4 {
+      font-size: 1rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .skill p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    /* SERVICES */
+    .services {
+      background: var(--bg-2);
+    }
+
+    .service-card {
+      min-height: 310px;
+      padding: 30px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      transition: 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(139, 92, 246, 0.55);
+    }
+
+    .service-num {
+      font-size: 0.9rem;
+      color: var(--blue);
+      font-weight: 900;
+      margin-bottom: 55px;
+    }
+
+    .service-card h3 {
+      font-weight: 950;
+      margin-bottom: 14px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    /* PROJECTS */
+    .project-card {
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--card);
+      margin-bottom: 28px;
+      transition: 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.5);
+    }
+
+    .project-img {
+      height: 280px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(139,92,246,0.12));
+    }
+
+    .project-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -312,183 +479,145 @@
       transform: scale(1.06);
     }
 
-    .project-card .card-body {
-      padding: 26px;
+    .project-body {
+      padding: 28px;
     }
 
-    .project-tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--blue);
-      background: #dbeafe;
-      padding: 6px 12px;
-      border-radius: 999px;
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    .project-body h3 {
+      font-weight: 950;
       margin-bottom: 14px;
     }
 
-    .project-card h5 {
-      color: var(--dark);
-      font-weight: 850;
-      margin-bottom: 12px;
+    .project-body p {
+      color: #cbd5e1;
+      margin-bottom: 20px;
     }
 
-    .project-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
+    .tag {
+      display: inline-block;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.12);
+      border: 1px solid rgba(56,189,248,0.24);
+      color: #bae6fd;
+      font-size: 0.75rem;
+      font-weight: 800;
+      margin-right: 6px;
+      margin-bottom: 8px;
     }
 
-    /* Skills */
-    .skills-section {
+    /* CONTACT */
+    .contact-box {
       background:
-        linear-gradient(135deg, #eff6ff, #f8fafc);
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 34%),
+        linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      padding: 46px;
     }
 
-    .skill-card {
-      background: #fff;
-      border-radius: 22px;
-      padding: 28px;
-      height: 100%;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
-      transition: 0.3s ease;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .skill-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, var(--blue), var(--sky));
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
+    .contact-box h2 {
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -2px;
       margin-bottom: 18px;
     }
 
-    .skill-card h5 {
-      color: var(--dark);
-      font-weight: 800;
-    }
-
-    .skill-card p {
-      color: var(--muted);
-      margin-bottom: 0;
-    }
-
-    /* Contact */
-    .contact-card {
-      background: var(--dark);
-      color: #fff;
-      border-radius: 28px;
-      padding: 36px;
-      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.18);
-    }
-
-    .contact-card p {
+    .contact-box p {
       color: #cbd5e1;
+      max-width: 650px;
+      margin-bottom: 28px;
     }
 
-    .contact-link {
+    .contact-list {
       display: flex;
-      align-items: center;
-      padding: 15px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.08);
-      margin-bottom: 12px;
-      color: #fff;
-      text-decoration: none;
-      transition: 0.3s ease;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .contact-link:hover {
-      background: rgba(56, 189, 248, 0.18);
-      color: #fff;
-      text-decoration: none;
-      transform: translateX(5px);
-    }
-
-    .contact-link i {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: rgba(56, 189, 248, 0.22);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 12px;
-    }
-
-    .contact-form {
-      background: #fff;
-      padding: 32px;
-      border-radius: 28px;
-      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
-    }
-
-    .form-control {
-      border-radius: 14px;
-      border: 1px solid #cbd5e1;
-      padding: 12px 14px;
-    }
-
-    .form-control:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.16);
-    }
-
-    /* Footer */
-    footer {
-      background: #020617;
-      color: #cbd5e1;
-      padding: 32px 0;
-    }
-
-    .footer-social a {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
+    .contact-list a {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--line);
       color: #fff;
-      margin: 0 5px;
+      font-weight: 700;
       transition: 0.3s ease;
     }
 
-    .footer-social a:hover {
+    .contact-list a:hover {
+      color: #050816;
       background: var(--blue);
       text-decoration: none;
       transform: translateY(-3px);
     }
 
-    @media (max-width: 768px) {
-      .hero-section {
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 991px) {
+      .hero {
         text-align: center;
-        padding-top: 110px;
       }
 
-      .hero-subtitle {
+      .hero-desc {
         margin-left: auto;
         margin-right: auto;
       }
 
+      .hero-actions {
+        justify-content: center;
+      }
+
       .hero-card {
-        margin-top: 35px;
+        margin-top: 44px;
+      }
+
+      .social-floating {
+        right: 18px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-card-info {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        padding: 30px;
       }
 
       .navbar-nav .nav-link {
         margin-left: 0;
-      }
-
-      .quick-info {
-        grid-template-columns: 1fr;
+        padding-top: 12px;
       }
     }
   </style>
@@ -496,313 +625,367 @@
 
 <body>
 
-  <!-- Navbar -->
-  <nav id="main-nav" class="navbar navbar-expand-md fixed-top navbar-dark">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container">
-      <a href="#home" class="navbar-brand">Akhdan<span>.</span></a>
+      <a class="navbar-brand" href="#home">Akhdan<span>.</span></a>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
         <i class="fas fa-bars text-light"></i>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
-          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#home">HOME</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">SKILLS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">SERVICES</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">PROJECTS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section id="home" class="hero-section">
-    <div class="container hero-content">
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-7">
-          <span class="badge-custom">
-            Management Student • HR Enthusiast • Maritime Industry
-          </span>
 
-          <h1 class="hero-title">
-            Hi, I’m <span>Akhdan Naufal</span>
+        <div class="col-lg-7">
+          <div class="mini-label">
+            <span class="dot"></span>
+            Available for collaboration
+          </div>
+
+          <h1>
+            Hi, I'm <br>
+            <span>Akhdan Naufal</span>
           </h1>
 
-          <p class="hero-subtitle">
-            I am currently pursuing my studies in Management at Universitas Dian Nusantara while working at PT Pelita Bandar Nasional (PELNI Crewing). I am interested in human resource management, business, and the maritime industry.
+          <p class="hero-desc">
+            A Management student at Universitas Dian Nusantara and part of PT Pelita Bandar Nasional
+            (PELNI Crewing). I am interested in human resource management, business administration,
+            digital design, and the maritime industry.
           </p>
 
-          <div class="hero-buttons">
-            <a href="#portfolio" class="btn btn-primary-custom">View Portfolio</a>
-            <a href="#contact" class="btn btn-outline-custom">Contact Me</a>
+          <div class="hero-actions">
+            <a href="#projects" class="btn-main">
+              View Projects <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn-ghost">
+              Connect Me <i class="far fa-paper-plane"></i>
+            </a>
           </div>
         </div>
 
         <div class="col-lg-5">
           <div class="hero-card">
-            <div class="profile-frame">
-              <img src="My.jpg" alt="Akhdan Naufal">
+            <div class="social-floating">
+              <a href="mailto:akdnnfl@gmail.com"><i class="fas fa-envelope"></i></a>
+              <a href="https://www.instagram.com/akdnn_937/" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://wa.me/6285150945443" target="_blank"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://discord.com" target="_blank"><i class="fab fa-discord"></i></a>
             </div>
 
-            <div class="quick-info">
-              <div>
-                <strong>Student</strong>
-                <span>Management, UNDIRA</span>
+            <img src="My.jpg" alt="Akhdan Naufal">
+
+            <div class="hero-card-info">
+              <div class="info-box">
+                <strong>UNDIRA</strong>
+                <span>Management Student</span>
               </div>
-              <div>
-                <strong>Work</strong>
-                <span>PELNI Crewing</span>
+              <div class="info-box">
+                <strong>PELNI</strong>
+                <span>Crewing Industry</span>
               </div>
-              <div>
-                <strong>Interest</strong>
+              <div class="info-box">
+                <strong>Focus</strong>
                 <span>HR & Business</span>
               </div>
-              <div>
-                <strong>Focus</strong>
-                <span>Design & Management</span>
+              <div class="info-box">
+                <strong>Interest</strong>
+                <span>Design & Digital</span>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about">
+  <!-- ABOUT -->
+  <section id="about" class="about">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-5 text-center mb-4 mb-lg-0">
-          <img src="My.jpg" alt="Akhdan Naufal" class="about-photo">
-        </div>
-
-        <div class="col-lg-7">
-          <div class="about-card">
-            <div class="section-label">About Me</div>
-            <h2>Personal Profile</h2>
-
-            <p>
-              My full name is Akhdan Naufal Syahputra. I am a Management student at Universitas Dian Nusantara and currently work at PT Pelita Bandar Nasional, also known as PELNI Crewing.
-            </p>
-
-            <p>
-              Through my academic and professional journey, I continue to develop my understanding of human resource management, organizational work, administration, and the maritime business environment.
-            </p>
-
-            <div class="mt-3">
-              <span class="info-chip">Human Resource</span>
-              <span class="info-chip">Management</span>
-              <span class="info-chip">Maritime Industry</span>
-              <span class="info-chip">UI Design</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section id="portfolio" class="portfolio-section">
-    <div class="container">
-      <div class="section-title text-center mb-5">
-        <div class="section-label">Portfolio</div>
-        <h2>Selected Projects</h2>
-        <p>
-          A collection of my design and development projects, mainly focused on interface design, business concepts, and digital product prototypes.
+      <div class="section-head">
+        <div class="section-kicker">A Little About Myself</div>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+          I am still growing, learning, and building my personal portfolio through academic,
+          professional, and creative experiences.
         </p>
       </div>
 
       <div class="row">
-
-        <div class="col-md-4 mb-4">
-          <div class="project-card">
-            <div class="project-img-wrap">
-              <img src="images/Kopidans.jpg" alt="Online Shop Drink Design">
-            </div>
-            <div class="card-body">
-              <span class="project-tag">Figma Design</span>
-              <h5>Online Shop Drink Design</h5>
-              <p>
-                A desktop design concept for an online drink store with a clean interface, consistent layout, and user-friendly navigation.
-              </p>
-            </div>
+        <div class="col-lg-6 mb-4">
+          <div class="about-panel">
+            <div class="about-number">01</div>
+            <h3>Who I Am</h3>
+            <p>
+              My full name is Akhdan Naufal Syahputra. I am currently pursuing my studies
+              in Management at Universitas Dian Nusantara.
+            </p>
+            <p>
+              Besides studying, I also work at PT Pelita Bandar Nasional, also known as
+              PELNI Crewing, where I continue to learn about administration, human resources,
+              and the maritime business environment.
+            </p>
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
-          <div class="project-card">
-            <div class="project-img-wrap">
-              <img src="images/mobiledesign.jpg" alt="Mobile Application Design">
-            </div>
-            <div class="card-body">
-              <span class="project-tag">Mobile UI</span>
-              <h5>Mobile Application Design</h5>
-              <p>
-                A mobile online drink shop design created in Figma, focusing on responsive display, clear navigation, and simple user experience.
-              </p>
-            </div>
+        <div class="col-lg-6 mb-4">
+          <div class="about-panel">
+            <div class="about-number">02</div>
+            <h3>What I’m Interested In</h3>
+            <p>
+              I am interested in human resource management, organizational work, business
+              process, UI design, and digital presentation.
+            </p>
+            <p>
+              Through this portfolio, I want to show my learning journey and several projects
+              related to design concepts, digital products, and management-related works.
+            </p>
           </div>
         </div>
+      </div>
 
-        <div class="col-md-4 mb-4">
-          <div class="project-card">
-            <div class="project-img-wrap">
-              <img src="images/pbndesign.jpg" alt="CMS PELNI Crewing Design">
-            </div>
-            <div class="card-body">
-              <span class="project-tag">CMS Prototype</span>
-              <h5>CMS PELNI Crewing Design</h5>
-              <p>
-                A CMS prototype for PELNI Crewing using Figma and Adobe XD, focused on efficient crew management and intuitive experience.
-              </p>
-            </div>
-          </div>
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>MANAGEMENT STUDENT</span>
+          <span>HR ENTHUSIAST</span>
+          <span>PELNI CREWING</span>
+          <span>MARITIME INDUSTRY</span>
+          <span>UI DESIGN</span>
+          <span>DIGITAL PORTFOLIO</span>
+          <span>MANAGEMENT STUDENT</span>
+          <span>HR ENTHUSIAST</span>
+          <span>PELNI CREWING</span>
+          <span>MARITIME INDUSTRY</span>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class="skills-section">
+  <!-- SKILLS -->
+  <section id="skills">
     <div class="container">
-      <div class="section-title text-center mb-5">
-        <div class="section-label">Skills</div>
-        <h2>What I’m Developing</h2>
-        <p>
-          I am still learning and improving, but these are several areas that I continue to develop through study, work, and practice.
+      <div class="section-head text-center">
+        <div class="section-kicker">What I Work With</div>
+        <h2 class="section-title">My Skills</h2>
+        <p class="section-subtitle mx-auto">
+          These are several areas that I am currently developing through study, work,
+          and personal projects.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill">
+          <i class="fas fa-users"></i>
+          <h4>Human Resource</h4>
+          <p>Learning recruitment, employee administration, coordination, and people management.</p>
+        </div>
+
+        <div class="skill">
+          <i class="fas fa-briefcase"></i>
+          <h4>Business Management</h4>
+          <p>Understanding management concepts, organizational work, and business processes.</p>
+        </div>
+
+        <div class="skill">
+          <i class="fas fa-ship"></i>
+          <h4>Maritime Industry</h4>
+          <p>Developing knowledge about crewing, ship manning, and maritime operations.</p>
+        </div>
+
+        <div class="skill">
+          <i class="fas fa-pencil-ruler"></i>
+          <h4>UI Design</h4>
+          <p>Creating simple interface concepts and digital product prototypes using design tools.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">What I Offer</div>
+        <h2 class="section-title">Personal Value</h2>
+        <p class="section-subtitle">
+          A few things I can contribute through my academic background, work experience,
+          and personal learning process.
         </p>
       </div>
 
       <div class="row">
-
-        <div class="col-md-4 mb-4">
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fas fa-users"></i></div>
-            <h5>Human Resource</h5>
+        <div class="col-lg-4 mb-4">
+          <div class="service-card">
+            <div class="service-num">01</div>
+            <h3>Administrative Support</h3>
             <p>
-              Understanding people management, administration, recruitment, and organizational coordination.
+              Supporting document preparation, data organization, reporting, and structured
+              administrative work.
             </p>
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fas fa-pencil-ruler"></i></div>
-            <h5>UI/UX Design</h5>
+        <div class="col-lg-4 mb-4">
+          <div class="service-card">
+            <div class="service-num">02</div>
+            <h3>HR Coordination</h3>
             <p>
-              Creating simple digital product prototypes and interface concepts using design tools.
+              Assisting people-related processes such as recruitment coordination, communication,
+              and basic employee administration.
             </p>
           </div>
         </div>
 
-        <div class="col-md-4 mb-4">
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fas fa-ship"></i></div>
-            <h5>Maritime Business</h5>
+        <div class="col-lg-4 mb-4">
+          <div class="service-card">
+            <div class="service-num">03</div>
+            <h3>Digital Design</h3>
             <p>
-              Learning business and operational processes within the crewing and maritime industry.
+              Creating simple design concepts, presentation layouts, and user interface prototypes
+              for digital products.
             </p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-head text-center">
+        <div class="section-kicker">Selected Work</div>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle mx-auto">
+          A collection of design and digital projects that represent my learning process
+          in interface design, business ideas, and management systems.
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="project-card">
+            <div class="project-img">
+              <img src="images/Kopi dans.jpg" alt="Online Shop Drink Design">
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span>01</span>
+                <span>Figma Design</span>
+              </div>
+              <h3>Online Shop Drink Design</h3>
+              <p>
+                A desktop design concept for an online drink store with a clean interface,
+                consistent color scheme, and user-friendly navigation.
+              </p>
+              <span class="tag">Figma</span>
+              <span class="tag">UI Design</span>
+              <span class="tag">Desktop</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="project-card">
+            <div class="project-img">
+              <img src="images/mobile-design.jpg" alt="Mobile Application Design">
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span>02</span>
+                <span>Mobile UI</span>
+              </div>
+              <h3>Mobile Application Design</h3>
+              <p>
+                A mobile online drink shop design focusing on responsive layout,
+                intuitive navigation, and simple user experience.
+              </p>
+              <span class="tag">Mobile</span>
+              <span class="tag">Prototype</span>
+              <span class="tag">UX</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="project-card">
+            <div class="project-img">
+              <img src="images/pbn-design.jpg" alt="CMS PELNI Crewing Design">
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span>03</span>
+                <span>CMS Prototype</span>
+              </div>
+              <h3>CMS PELNI Crewing Design</h3>
+              <p>
+                A CMS prototype for PELNI Crewing using Figma and Adobe XD, focused on
+                efficient crew management and intuitive user experience.
+              </p>
+              <span class="tag">CMS</span>
+              <span class="tag">Figma</span>
+              <span class="tag">Adobe XD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section id="contact">
     <div class="container">
-      <div class="section-title text-center mb-5">
-        <div class="section-label">Contact</div>
-        <h2>Let’s Connect</h2>
+      <div class="contact-box">
+        <div class="section-kicker">Have an idea?</div>
+        <h2>Let’s connect and build something useful.</h2>
         <p>
-          Feel free to reach out for collaboration, discussion, or professional networking.
+          Feel free to reach out for collaboration, discussion, networking, or just to say hello.
+          I am open to learning opportunities, design projects, and professional conversations.
         </p>
-      </div>
 
-      <div class="row align-items-stretch">
-        <div class="col-lg-5 mb-4 mb-lg-0">
-          <div class="contact-card h-100">
-            <h3>Contact Information</h3>
-            <p class="mb-4">
-              You can contact me through email, Instagram, WhatsApp, or Discord.
-            </p>
-
-            <a href="mailto:akdnnfl@gmail.com" class="contact-link">
-              <i class="fas fa-envelope"></i>
-              <span>akdnnfl@gmail.com</span>
-            </a>
-
-            <a href="https://wa.me/6285150945443" target="_blank" class="contact-link">
-              <i class="fab fa-whatsapp"></i>
-              <span>WhatsApp</span>
-            </a>
-
-            <a href="https://www.instagram.com/akdnn_937/" target="_blank" class="contact-link">
-              <i class="fab fa-instagram"></i>
-              <span>@akdnn_937</span>
-            </a>
-
-            <a href="https://discord.com" target="_blank" class="contact-link">
-              <i class="fab fa-discord"></i>
-              <span>Discord</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="col-lg-7">
-          <div class="contact-form h-100">
-            <form>
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Your name" required>
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Your email" required>
-              </div>
-
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea class="form-control" id="message" rows="5" placeholder="Write your message..." required></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary-custom">
-                Send Message
-              </button>
-            </form>
-
-            <small class="d-block mt-3 text-muted">
-              Note: This form is a front-end display only. To make it work, it needs to be connected to a form service or backend.
-            </small>
-          </div>
+        <div class="contact-list">
+          <a href="mailto:akdnnfl@gmail.com">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <a href="https://wa.me/6285150945443" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://www.instagram.com/akdnn_937/" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+          <a href="https://discord.com" target="_blank">
+            <i class="fab fa-discord"></i> Discord
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <div class="container text-center">
-      <h5 class="text-white mb-2">Akhdan Naufal Syahputra</h5>
-      <p class="mb-3">Management Student • HR Enthusiast • Maritime Industry</p>
-
-      <div class="footer-social mb-3">
-        <a href="mailto:akdnnfl@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://discord.com" target="_blank"><i class="fab fa-discord"></i></a>
-        <a href="https://www.instagram.com/akdnn_937/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/6285150945443" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      </div>
-
+    <div class="container">
+      <p class="mb-1">Akhdan Naufal Syahputra</p>
       <p class="mb-0">&copy; 2026 Akhdan Naufal. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
