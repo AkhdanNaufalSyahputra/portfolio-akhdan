@@ -371,6 +371,146 @@
       to { transform: translateX(-50%); }
     }
 
+    /* EXPERIENCE */
+    .experience {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.10), transparent 28%),
+        radial-gradient(circle at 90% 65%, rgba(139, 92, 246, 0.12), transparent 30%),
+        var(--bg);
+    }
+
+    .experience-timeline {
+      position: relative;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .experience-timeline::before {
+      content: "";
+      position: absolute;
+      left: 28px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), var(--purple), transparent);
+    }
+
+    .experience-item {
+      position: relative;
+      padding-left: 82px;
+      margin-bottom: 28px;
+    }
+
+    .experience-dot {
+      position: absolute;
+      left: 10px;
+      top: 24px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1rem;
+      box-shadow: 0 0 28px rgba(56, 189, 248, 0.35);
+      z-index: 2;
+    }
+
+    .experience-card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      transition: 0.3s ease;
+      overflow: hidden;
+    }
+
+    .experience-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -70px;
+      top: -70px;
+      background: rgba(56, 189, 248, 0.10);
+      border-radius: 50%;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+    }
+
+    .experience-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .experience-role h3 {
+      font-size: 1.35rem;
+      font-weight: 950;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .experience-company {
+      color: #cbd5e1;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .experience-date {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .experience-badge {
+      flex-shrink: 0;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #bae6fd;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .experience-card p {
+      color: #cbd5e1;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .experience-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .experience-tags span {
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--line);
+      color: #e2e8f0;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
     /* SKILLS */
     .skills-grid {
       display: grid;
@@ -619,6 +759,22 @@
         margin-left: 0;
         padding-top: 12px;
       }
+
+      .experience-timeline::before {
+        left: 18px;
+      }
+
+      .experience-item {
+        padding-left: 58px;
+      }
+
+      .experience-dot {
+        left: 0;
+      }
+
+      .experience-header {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -638,6 +794,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><a class="nav-link" href="#home">HOME</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">EXPERIENCE</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills">SKILLS</a></li>
           <li class="nav-item"><a class="nav-link" href="#services">SERVICES</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">PROJECTS</a></li>
@@ -773,6 +930,129 @@
           <span>PELNI CREWING</span>
           <span>MARITIME INDUSTRY</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="experience">
+    <div class="container">
+      <div class="section-head text-center">
+        <div class="section-kicker">Professional Journey</div>
+        <h2 class="section-title">Experience</h2>
+        <p class="section-subtitle mx-auto">
+          A brief timeline of my professional experience in human resources, employee services,
+          public relations, administration, and creative support.
+        </p>
+      </div>
+
+      <div class="experience-timeline">
+
+        <div class="experience-item">
+          <div class="experience-dot">
+            <i class="fas fa-briefcase"></i>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-header">
+              <div class="experience-role">
+                <h3>Human Resources Staff | Employee Services</h3>
+                <div class="experience-company">
+                  PELNI Crewing | PT Pelita Bandar Nasional
+                </div>
+                <div class="experience-date">
+                  Jun 2025 - Present · Jakarta, Indonesia
+                </div>
+              </div>
+
+              <div class="experience-badge">Current Role</div>
+            </div>
+
+            <p>
+              Supporting human resources and employee service activities, including administrative
+              coordination, employee-related documentation, internal communication, and operational
+              support within the crewing and maritime business environment.
+            </p>
+
+            <div class="experience-tags">
+              <span>Human Resources</span>
+              <span>Employee Services</span>
+              <span>Administration</span>
+              <span>Crewing Industry</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="experience-dot">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-header">
+              <div class="experience-role">
+                <h3>Human Resources Intern</h3>
+                <div class="experience-company">
+                  PELNI Crewing | PT Pelita Bandar Nasional
+                </div>
+                <div class="experience-date">
+                  Aug 2024 - Oct 2024 · Jakarta, Indonesia
+                </div>
+              </div>
+
+              <div class="experience-badge">Internship</div>
+            </div>
+
+            <p>
+              Assisted HR administrative activities, supported employee data management,
+              prepared documents, and learned about human resource practices in a professional
+              crewing company environment.
+            </p>
+
+            <div class="experience-tags">
+              <span>HR Administration</span>
+              <span>Data Analysis</span>
+              <span>Adobe Photoshop</span>
+              <span>Employee Data</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="experience-dot">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-header">
+              <div class="experience-role">
+                <h3>Public Relations Intern</h3>
+                <div class="experience-company">
+                  PT Berdikari
+                </div>
+                <div class="experience-date">
+                  Feb 2024 - Apr 2024 · Central Jakarta, Indonesia
+                </div>
+              </div>
+
+              <div class="experience-badge">Internship</div>
+            </div>
+
+            <p>
+              Supported public relations activities, assisted communication-related tasks,
+              contributed to creative documentation, and gained experience in professional
+              corporate communication.
+            </p>
+
+            <div class="experience-tags">
+              <span>Public Relations</span>
+              <span>Corporate Communication</span>
+              <span>Adobe Photoshop</span>
+              <span>Creative Support</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
